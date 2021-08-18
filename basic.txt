@@ -1,0 +1,59 @@
+[00:03:35] [info] hello
+[00:05:00] [info] hello
+[00:05:00] [info] START ARTICLE MANAGER
+[00:05:00] [info] check files in folder '/articles'
+[00:07:18] [info] hello
+[00:07:18] [info] START ARTICLE MANAGER
+[00:07:18] [info] check files in folder '/articles'
+[00:08:31] [info] hello
+[00:08:31] [info] START ARTICLE MANAGER
+[00:08:31] [info] check files in folder '/articles'
+[00:10:23] [info] hello
+[00:10:23] [info] START ARTICLE MANAGER
+[00:10:23] [info] check files in folder '/articles'
+[00:11:16] [info] hello
+[00:11:16] [info] START ARTICLE MANAGER
+[00:11:16] [info] check files in folder '/articles'
+[00:11:36] [info] hello
+[00:11:36] [info] START ARTICLE MANAGER
+[00:11:36] [info] check files in folder '/articles'
+[00:12:03] [info] hello
+[00:12:03] [info] START ARTICLE MANAGER
+[00:12:03] [info] check files in folder '/articles'
+[00:17:58] [info] hello
+[00:17:58] [info] START ARTICLE MANAGER
+[00:17:58] [info] check files in folder '/articles'
+[00:19:28] [info] hello
+[00:19:28] [info] START ARTICLE MANAGER
+[00:19:28] [info] check files in folder '/articles'
+[00:42:16] [info] hello
+[00:42:16] [info] START ARTICLE MANAGER
+[00:42:16] [info] check files in folder '/articles'
+[00:44:38] [info] hello
+[00:44:38] [info] START ARTICLE MANAGER
+[00:44:38] [info] check files in folder '/articles'
+[01:11:47] [info] hello
+[01:11:47] [info] START ARTICLE MANAGER
+[01:11:47] [info] check files in folder '/articles'
+[01:33:40] [info] hello
+[01:33:40] [info] START ARTICLE MANAGER
+[01:33:40] [info] check files in folder '/articles'
+[01:45:41] [info] hello
+[01:45:41] [info] START ARTICLE MANAGER
+[01:45:41] [info] check files in folder '/articles'
+[01:46:01] [error] open help.txt
+[01:46:32] [info] hello
+[01:46:32] [info] START ARTICLE MANAGER
+[01:46:32] [info] check files in folder '/articles'
+[01:46:35] [error] open help.txt
+[01:46:55] [info] hello
+[01:46:55] [info] START ARTICLE MANAGER
+[01:46:55] [info] check files in folder '/articles'
+[01:51:41] [info] hello
+[01:51:41] [info] START ARTICLE MANAGER
+[01:51:41] [info] check files in folder '/articles'
+[01:51:55] [info] end article manager session
+[01:59:11] [info] hello
+[01:59:11] [info] START ARTICLE MANAGER
+[01:59:11] [info] check files in folder '/articles'
+[01:59:53] [info] end session
