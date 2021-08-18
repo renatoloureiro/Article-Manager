@@ -19,15 +19,25 @@ namespace fs = std::filesystem;
 
 class unit{
     public:
-        int x;
         std::string name;
+        int number;
         std::vector <std::string> tag;
+        unit clear(unit aux);
 };
 
-std::vector <unit> list;
+unit unit::clear(unit aux){
+    aux.tag.clear();
+    aux.name.clear();
+    aux.number=-1;
+    return aux;
+}
+
+
 std::vector <std::string> tags;
 
 int main(void){
+
+    std::vector <unit> list;
 
     spdlog::set_pattern("[%H:%M:%S] [%^%l%$] %v");
     auto my_logger = spdlog::basic_logger_mt("basic_logger", "basic.txt");
@@ -59,10 +69,53 @@ int main(void){
     std::cout << files[1] << std::endl;
     system("ls articles");
     
-    
+    // upload list of current data inside .txt
+    std::fstream newfile;
+    newfile.open("data.txt",std::ios::in);
+    if(newfile.is_open()) {
+        std::string tp;
+        unit aux{};
+        while(getline(newfile, tp)){ //read data from file object and put it into string.
+            
+            char space_char = ' ';
+            std::vector<std::string> words{};
 
-    unit renato1{5, "mamma mia"};
-    unit renato2{6, "mamma poop"};
+            std::stringstream sstream(tp);
+            std::string word;
+            while (std::getline(sstream, word, space_char)){
+                word.erase(std::remove_if(word.begin(), word.end(), ispunct), word.end());
+                words.push_back(word);
+            }
+            if (words[0]=="name"){
+                aux.name=words[1];
+            }
+            if (words[0]=="number"){
+                aux.number=std::stoi(words[1]);
+            }
+            if (words[0]=="tag"){
+                for(int i=1; i<words.size();i++){
+                    (aux.tag).push_back(words[i]);
+                }
+            }
+            if (words[0]=="break"){
+                list.push_back(aux);
+                aux=aux.clear(aux);
+            }
+            
+            
+        }
+        newfile.close(); 
+        } else {
+            spdlog::error("open help.txt");
+            my_logger->error("open help.txt");
+            newfile.close(); 
+            return EXIT_FAILURE;
+        }
+
+    //
+
+    unit renato1{"mamma mia",5 };
+    unit renato2{"mamma mia", 6};
     list.push_back(renato1);
     list.push_back(renato2);
 
