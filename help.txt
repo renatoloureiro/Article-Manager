@@ -1,0 +1,5 @@
+status [-a] 
+show 
+doc 
+add [file] [-t] [tag1 tag2 ...] 
+quit
