@@ -15,7 +15,7 @@
 
 std::vector <unit> upload(std::vector <unit> list, std::shared_ptr<spdlog::logger> my_logger){
     std::fstream newfile;
-    newfile.open("data.txt",std::ios::in);
+    newfile.open(strcat(get_current_dir_name() , "/bin/data.txt"),std::ios::in);
     if(newfile.is_open()) {
         std::string tp;
         unit aux{};
@@ -50,8 +50,8 @@ std::vector <unit> upload(std::vector <unit> list, std::shared_ptr<spdlog::logge
         }
         newfile.close(); 
     } else {
-        spdlog::error("open help.txt");
-        my_logger->error("open help.txt");
+        spdlog::error("open data.txt");
+        my_logger->error("open data.txt");
         newfile.close(); 
         exit(-1);
     }

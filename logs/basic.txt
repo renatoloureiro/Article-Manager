@@ -57,3 +57,30 @@
 [01:59:11] [info] START ARTICLE MANAGER
 [01:59:11] [info] check files in folder '/articles'
 [01:59:53] [info] end session
+[18:00:42] [info] START ARTICLE MANAGER
+[18:00:42] [info] check files in folder '/articles'
+[18:00:42] [error] open help.txt
+[18:03:31] [info] START ARTICLE MANAGER
+[18:03:31] [info] check files in folder '/articles'
+[18:03:31] [error] open data.txt
+[18:04:25] [info] START ARTICLE MANAGER
+[18:04:38] [info] check files in folder '/articles'
+[18:04:38] [error] open data.txt
+[18:05:07] [info] START ARTICLE MANAGER
+[18:05:09] [info] check files in folder '/articles'
+[18:05:09] [error] open data.txt
+[18:05:54] [info] START ARTICLE MANAGER
+[18:05:54] [info] check files in folder '/articles'
+[18:05:54] [error] open data.txt
+[18:10:22] [info] START ARTICLE MANAGER
+[18:10:22] [info] check files in folder '/articles'
+[18:10:22] [error] open data.txt
+[18:10:54] [info] START ARTICLE MANAGER
+[18:10:54] [info] check files in folder '/articles'
+[18:11:40] [info] end session
+[18:11:51] [info] START ARTICLE MANAGER
+[18:11:51] [info] check files in folder '/articles'
+[18:12:10] [info] end session
+[18:20:10] [info] START ARTICLE MANAGER
+[18:20:10] [info] check files in folder '/articles'
+[18:20:36] [info] end session

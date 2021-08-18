@@ -16,8 +16,8 @@ email: renato.loureiro@tecnico.ulisboa.pt
 #include "spdlog/async.h" 
 #include "spdlog/sinks/basic_file_sink.h"
 
-#include "class.hpp"
-#include "functions.hpp"
+#include "src/class.hpp"
+#include "src/functions.hpp"
 
 namespace fs = std::filesystem;
 
@@ -29,7 +29,7 @@ std::vector <std::string> tags;
 int main(void){
 
     spdlog::set_pattern("[%H:%M:%S] [%^%l%$] %v");
-    std::shared_ptr<spdlog::logger> my_logger = spdlog::basic_logger_mt("basic_logger", "basic.txt");
+    std::shared_ptr<spdlog::logger> my_logger = spdlog::basic_logger_mt("basic_logger", "logs/basic.txt");
 
     spdlog::info("START ARTICLE MANAGER");
     my_logger->info("START ARTICLE MANAGER");
@@ -48,7 +48,7 @@ int main(void){
     // upload list of current data inside .txt
     list=upload(list, my_logger);
 
-    save_list(list);
+    //save_list(list);
 
     while(1){
         std::string mystrg;
@@ -62,7 +62,7 @@ int main(void){
         if(mystrg == "--help"){
 
             std::fstream newfile;
-            newfile.open("help.txt",std::ios::in);
+            newfile.open("bin/help.txt",std::ios::in);
             if(newfile.is_open()) {
 
                 std::string tp;
