@@ -23,12 +23,12 @@ std::vector <unit> upload(std::vector <unit> list, std::shared_ptr<spdlog::logge
         while(getline(newfile, tp)){ //read data from file object and put it into string.
             
             char space_char = ' ';
-            std::vector<std::string> words{};
+            std::vector<std::string> words;
 
             std::stringstream sstream(tp);
             std::string word;
             while (std::getline(sstream, word, space_char)){
-                word.erase(std::remove_if(word.begin(), word.end(), isspace), word.end());
+                //word.erase(std::remove_if(word.begin(), word.end(), isspace), word.end());
                 words.push_back(word);
             }
             if (words[0]=="name"){
@@ -81,6 +81,12 @@ std::vector<char *> read_files_from_directory(std::shared_ptr<spdlog::logger> my
 
 config_state config_upload(){
 
+    if(std::filesystem::exists("config.yaml")==0){
+        spdlog::error("config.yaml does not exist in current directory");
+        spdlog::error("manager will exit");
+        exit(-1);
+    };
+
     config_state manager_config;
 
     YAML::Node config = YAML::LoadFile("config.yaml");
@@ -91,6 +97,8 @@ config_state config_upload(){
 
     manager_config.username = config["username"].as<std::string>();
     manager_config.password = config["password"].as<std::string>();
+    //manager_config.directory = config["directory"].as<std::string>();
+
     //login(username, password);
     //config["lastLogin"] = std::getCurrentDateTime();
 
