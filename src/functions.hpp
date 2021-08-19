@@ -1,6 +1,7 @@
 #ifndef FUNCTIONS_HPP
 #define FUNCTIONS_HPP
 
+#include <iostream>
 #include <string>
 #include <fstream>
 #include <filesystem>
@@ -107,5 +108,13 @@ int save_list(std::vector <unit> list){
     }
     return 0;
 }
+
+std::ostream& bold_on(std::ostream& os){
+    return os << "\e[1m";
+}
+std::ostream& bold_off(std::ostream& os){
+    return os << "\e[0m";
+}
+
 
 #endif
