@@ -11,6 +11,7 @@ email: renato.loureiro@tecnico.ulisboa.pt
 #include <vector>
 #include <dirent.h>
 #include <yaml-cpp/yaml.h>
+#include <sys/types.h>
 
 #if __has_include("spdlog/spdlog.h") && __has_include("spdlog/async.h") && __has_include("spdlog/sinks/basic_file_sink.h")
 int spdlog_stat=1;
@@ -40,7 +41,8 @@ std::vector <std::string> tags;
 int main(void){
     
     if(spdlog_stat==0){
-        std::cout << "[WARNING] spdlog not instaled" <<std::endl;
+        std::cout << bold_on <<"[WARNING]" << bold_off<<" spdlog not instaled" <<std::endl;
+        std::cout << bold_on <<"[ERROR]" << bold_off << " manager will exit" << std::endl;
         exit(-1);
     }
 
@@ -50,23 +52,31 @@ int main(void){
     spdlog::info("START ARTICLE MANAGER");
     my_logger->info("START ARTICLE MANAGER");
 
-
     //upload config parameters from config.yaml
     config_state manager_config=config_upload();
 
+    char *pass = getpass("\nEnter Administrator Password: ");
+    if(strcmp(pass,"loureiro1") !=0){
+        spdlog::error("wrong password");
+        spdlog::error("manager will exit");
+        exit(-1);
+    }
+    
     std::vector <unit> list;
 
     spdlog::info("check files in folder '/articles'");
     my_logger->info("check files in folder '/articles'");
-    
+
 
     // read files from directory where articles are stored
     std::vector<char *> files=read_files_from_directory(my_logger);
     
+
     // upload list of current data inside .txt
     list=upload(list, my_logger);
 
-    struct stat fileInfo;
+
+    /*struct stat fileInfo;
     if (stat(strcat(get_current_dir_name() , "/articles/Arob_2teste_89708.pdf"), &fileInfo) != 0) {  // Use stat() to get the info
       std::cerr << "Error: " << strerror(errno) << '\n';
       return(EXIT_FAILURE);
@@ -76,7 +86,7 @@ int main(void){
     std::cout << "Device        : " << (char)(fileInfo.st_dev + 'A') << '\n';  // Device number
     std::cout << "Created       : " << std::ctime(&fileInfo.st_ctime);         // Creation time
     std::cout << "Modified      : " << std::ctime(&fileInfo.st_mtime);         // Last mod time
-
+    */
 
 
     //save_list(list);
@@ -103,16 +113,21 @@ int main(void){
 
                 if (words[1]=="-n"){
                     // read number that I have for each file still to be uploaded
+                
                 }else{
                     std::vector<char *> files=read_files_from_directory(my_logger);
                     int a=0;
                     for (int i=0; i<files.size(); i++){
-                        if(words[1]==files[i]){
+                        if(words[1]==files[i]){ //verify if file exists
                             a=1;
                         }
                     }
                     if (a==1){
                         std::cout << "the file exists and it will be added"<< std::endl;
+                        unit aux{};
+                        aux.name=words[1];
+                        (aux.tag).push_back(words[3]);
+                        list.push_back(aux);
                     }else{
                         std::cout << "the file does NOT exist" << std::endl;
                     }
@@ -145,18 +160,36 @@ int main(void){
         }
 
         if(words[0]=="status"){
-            //check the current files upload into manager
-            
+
             std::vector<char *> files=read_files_from_directory(my_logger);
-            std::cout <<"Lack to upload " << bold_on << files.size() << bold_off << " files" << std::endl;
+            std::cout << bold_on <<"["<< files.size() <<"]"<< bold_off <<" files in current directory" <<std::endl;
+            std::cout << bold_on <<"["<< list.size() <<"]"<< bold_off <<" files uploaded" <<std::endl;
+            std::cout << "files to upload:" << std::endl;
+            
+            int aux=0;
             for(int i=0; i<files.size(); i++){
-                std::cout << "    "<< bold_on << "["<< i << "]" << bold_off << " " << files[i] << std::endl;
+                int k=0;
+                for (int j = 0; j < list.size(); j++){
+                    if (list[j].name==files[i]){
+                        k++;
+                    }
+                }
+                if(k==0){
+                    std::cout << "    " <<bold_on << "["<<aux<<"] "<< bold_off << files[i] << std::endl;
+                    aux++;
+                }
             }
+            //std::cout << bold_on <<"["<< aux <<"]"<< bold_off <<" files NOT uploaded" <<std::endl;
         }
 
 
 
         if(words[0] == "quit"){
+            // save data in .txt
+            // rewrite list data 
+
+
+
             spdlog::info("end session");
             my_logger->info("end session");
             return EXIT_FAILURE;
