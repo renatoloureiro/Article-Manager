@@ -5,8 +5,6 @@ doc
 
 add [file] [-t] [tag1 tag2 ...] 
 add [-n] [number] [-t] [tag1 tag2 ...]
-add [-t] [tag1 tag2 ...] [-f] [file]
-add [-t] [tag1 tag2 ...] [-n] [number]
 
 rename [-n] [number] [new name]
 

@@ -84,3 +84,5 @@
 [18:20:10] [info] START ARTICLE MANAGER
 [18:20:10] [info] check files in folder '/articles'
 [18:20:36] [info] end session
+[23:01:43] [info] START ARTICLE MANAGER
+[23:01:43] [info] check files in folder '/articles'
