@@ -137,7 +137,16 @@ int main(void){
 
 
         if(words[0] == "show"){
-            system("ls articles");
+
+            for (int i=0; i<list.size() ;i++){
+                std::cout <<  bold_on << "["<<list[i].number <<  "]"<< bold_off <<  "\t" <<list[i].name  << "\t" << bold_on <<"--tag" << bold_off <<"\t";
+                for (int j = 0; j < list[i].tag.size(); j++){
+                    std::cout << list[i].tag[j] <<"\t";
+                }
+                std::cout << "\n";
+            }
+
+            //system("ls articles");
         }
 
         if(words[0] == "--help"){
