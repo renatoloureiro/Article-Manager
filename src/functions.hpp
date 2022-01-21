@@ -28,16 +28,12 @@ std::vector <unit> upload(std::vector <unit> list, std::shared_ptr<spdlog::logge
             std::stringstream sstream(tp);
             std::string word;
             while (std::getline(sstream, word, space_char)){
-                //word.erase(std::remove_if(word.begin(), word.end(), isspace), word.end());
                 words.push_back(word);
             }
-            if (words[0]=="name"){
+            if (words[0]=="-f"){
                 aux.name=words[1];
             }
-            if (words[0]=="number"){
-                aux.number=std::stoi(words[1]);
-            }
-            if (words[0]=="tag"){
+            if (words[0]=="-t"){
                 for(int i=1; i<words.size();i++){
                     (aux.tag).push_back(words[i]);
                 }
@@ -59,6 +55,15 @@ std::vector <unit> upload(std::vector <unit> list, std::shared_ptr<spdlog::logge
 
     return list;
 }
+
+
+std::vector <unit> update_number(std::vector <unit> list, std::shared_ptr<spdlog::logger> my_logger){
+    for (int i=0; i<list.size(); i++){
+        list[i].number=i;
+    }
+    return list;
+}
+
 
 std::vector<char *> read_files_from_directory(std::shared_ptr<spdlog::logger> my_logger){
     DIR *dir; struct dirent *diread;
@@ -111,10 +116,19 @@ config_state config_upload(){
 int save_list(std::vector <unit> list){
 
     for(int i=0; i<list.size();i++){
-        std::cout<< "name " << list[i].name << std::endl;
-        std::cout<< "number " << list[i].number << std::endl;
+        std::cout << "-f " << list[i].name << std::endl;
+        //std::cout<< "-ab" << list[i].abstract << std::endl;
+        std::cout << "-t ";
+        for(int j=0; j<list[i].tag.size(); j++){
+            std::cout << list[i].tag[j] << " ";
+        }
+        
+        std::cout << "\n" << "--break"<< std::endl;  
+        
     }
     return 0;
+
+
 }
 
 std::ostream& bold_on(std::ostream& os){

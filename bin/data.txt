@@ -1,8 +1,6 @@
-name renato-loureiro
-number 1
-tag mpc optimize
+-f renato-loureiro
+-t mpc optimize
 --break
-name pedro
-number 1
-tag mpc stuttgart
+-f pedro
+-t mpc stuttgart
 --break

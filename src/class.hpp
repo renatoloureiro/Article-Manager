@@ -7,6 +7,9 @@
 class unit{
     public:
         std::string name;
+        std::string abstract;
+        std::string author;
+        std::string year;
         int number;
         std::vector <std::string> tag;
         unit clear(unit aux);

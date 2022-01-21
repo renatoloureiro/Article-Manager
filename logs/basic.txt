@@ -107,3 +107,15 @@
 [23:09:20] [info] check files in folder '/articles'
 [23:09:28] [info] end session
 [23:11:45] [info] START ARTICLE MANAGER
+[19:48:57] [info] START ARTICLE MANAGER
+[19:49:25] [info] check files in folder '/articles'
+[19:50:36] [info] end session
+[20:33:14] [info] START ARTICLE MANAGER
+[20:34:00] [info] check files in folder '/articles'
+[20:34:06] [info] end session
+[20:34:46] [info] START ARTICLE MANAGER
+[20:34:49] [info] check files in folder '/articles'
+[20:35:07] [info] end session
+[20:35:49] [info] START ARTICLE MANAGER
+[20:35:52] [info] check files in folder '/articles'
+[20:36:04] [info] end session

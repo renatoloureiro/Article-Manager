@@ -74,7 +74,7 @@ int main(void){
 
     // upload list of current data inside .txt
     list=upload(list, my_logger);
-
+    list=update_number(list,my_logger);
 
     /*struct stat fileInfo;
     if (stat(strcat(get_current_dir_name() , "/articles/Arob_2teste_89708.pdf"), &fileInfo) != 0) {  // Use stat() to get the info
@@ -119,6 +119,7 @@ int main(void){
                     (aux.tag).push_back(words[4]);
                     //list.emplace_back(aux);
                     list.push_back(aux);
+                    list=update_number(list,my_logger);
 
                 }else{
                     std::vector<char *> files=read_files_from_directory(my_logger);
@@ -137,6 +138,7 @@ int main(void){
                     }else{
                         std::cout << "the file does NOT exist" << std::endl;
                     }
+                    list=update_number(list,my_logger);
                 }
             }            
         }
@@ -148,13 +150,28 @@ int main(void){
             //if(words[1]=="-f"){
             //    system("ls articles");
             //}
-            
-            for (int i=0; i<list.size() ;i++){
-                std::cout <<  bold_on << "["<<list[i].number <<  "]"<< bold_off <<  "\t" <<list[i].name  << "\t" << bold_on <<"--tag" << bold_off <<"\t";
-                for (int j = 0; j < list[i].tag.size(); j++){
-                    std::cout << list[i].tag[j] <<"\t";
+            if (words.size()>=3){
+                if (words[1]=="-n"){
+                    int number=stoi(words[2]);
+                    for(int i=0;i<list.size(); i++){
+                        if (list[i].number==number){
+                            std::cout <<  bold_on << "["<<list[i].number <<  "]"<< bold_off <<  "\t" <<list[i].name  << "\t" << bold_on <<"--tag" << bold_off <<"\t";
+                            for (int j = 0; j < list[i].tag.size(); j++){
+                                std::cout << list[i].tag[j] <<"\t";
+                            }
+                            std::cout << "\n";
+                            break;
+                        }
+                    }
                 }
-                std::cout << "\n";
+            }else{
+                for (int i=0; i<list.size() ;i++){
+                    std::cout <<  bold_on << "["<<list[i].number <<  "]"<< bold_off <<  "\t" <<list[i].name  << "\t" << bold_on <<"--tag" << bold_off <<"\t";
+                    for (int j = 0; j < list[i].tag.size(); j++){
+                        std::cout << list[i].tag[j] <<"\t";
+                    }
+                    std::cout << "\n";
+                }
             }
 
         }
