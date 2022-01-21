@@ -113,7 +113,13 @@ int main(void){
 
                 if (words[1]=="-n"){
                     // read number that I have for each file still to be uploaded
-                
+                    std::vector<char *> files=read_files_from_directory(my_logger);
+                    unit aux{};
+                    aux.name=files[stoi(words[2])];
+                    (aux.tag).push_back(words[4]);
+                    //list.emplace_back(aux);
+                    list.push_back(aux);
+
                 }else{
                     std::vector<char *> files=read_files_from_directory(my_logger);
                     int a=0;
@@ -138,6 +144,11 @@ int main(void){
 
         if(words[0] == "show"){
 
+            //check the size of words first
+            //if(words[1]=="-f"){
+            //    system("ls articles");
+            //}
+            
             for (int i=0; i<list.size() ;i++){
                 std::cout <<  bold_on << "["<<list[i].number <<  "]"<< bold_off <<  "\t" <<list[i].name  << "\t" << bold_on <<"--tag" << bold_off <<"\t";
                 for (int j = 0; j < list[i].tag.size(); j++){
@@ -146,8 +157,8 @@ int main(void){
                 std::cout << "\n";
             }
 
-            //system("ls articles");
         }
+
 
         if(words[0] == "--help"){
 
@@ -197,11 +208,12 @@ int main(void){
             // save data in .txt
             // rewrite list data 
 
-
+            save_list(list);
 
             spdlog::info("end session");
             my_logger->info("end session");
             return EXIT_FAILURE;
+            //exit(-1);
         }
 
     }
