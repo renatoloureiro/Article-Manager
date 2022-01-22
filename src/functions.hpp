@@ -115,15 +115,19 @@ config_state config_upload(){
 
 int save_list(std::vector <unit> list){
 
+    std::ofstream newfile;
+    newfile.open(strcat(get_current_dir_name() , "/bin/example.txt"),std::ios::out);
+    
+
     for(int i=0; i<list.size();i++){
-        std::cout << "-f " << list[i].name << std::endl;
+        newfile << "-f " << list[i].name << std::endl;
         //std::cout<< "-ab" << list[i].abstract << std::endl;
-        std::cout << "-t ";
+        newfile << "-t ";
         for(int j=0; j<list[i].tag.size(); j++){
-            std::cout << list[i].tag[j] << " ";
+            newfile << list[i].tag[j] << " ";
         }
         
-        std::cout << "\n" << "--break"<< std::endl;  
+        newfile << "\n" << "--break"<< std::endl;  
         
     }
     return 0;

@@ -105,6 +105,18 @@ int main(void){
             words.push_back(word);
         }
 
+        if(words[0]=="open" && words[1]=="-n"){
+            int number=stoi(words[2]);
+            for(int i=0;i<list.size(); i++){
+                if (list[i].number==number){
+                    std::string str = "xdg-open articles/" +  list[i].name; 
+                    const char*c =str.c_str();
+                    system(c);
+                    break;
+                }
+            }            
+        }
+
 
         if(words[0] =="add"){
             if (words.size()==1){
