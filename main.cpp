@@ -126,11 +126,12 @@ int main(void){
                 if (words[1]=="-n"){
                     // read number that I have for each file still to be uploaded
                     std::vector<char *> files=read_files_from_directory(my_logger);
+                    
                     unit aux{};
                     aux.name=files[stoi(words[2])];
                     (aux.tag).push_back(words[4]);
-                    //list.emplace_back(aux);
                     list.push_back(aux);
+                    
                     list=update_number(list,my_logger);
 
                 }else{
