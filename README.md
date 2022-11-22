@@ -1,4 +1,4 @@
-# Article Manager
+# Article Manager (in development)
 
 <p>
     <img src="https://img.shields.io/badge/ubuntu-v20.04-blue"/>
